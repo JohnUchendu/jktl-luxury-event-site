@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Root variables ───────────────────────────────────────────────────────── */
+:root {
+  --navy-950:  #020818;
+  --navy-900:  #060E2A;
+  --navy-800:  #0B1640;
+  --navy-700:  #112055;
+  --navy-600:  #1A316E;
+  --navy-400:  #3A5FA3;
+  --cream-50:  #FDFCF8;
+  --cream-100: #F9F7F0;
+  --cream-200: #F3EFE4;
+  --cream-300: #E8E1D0;
+  --gold-400:  #C9A84C;
+  --gold-300:  #D4B96A;
+  --gold-200:  #E2CF96;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream-50);
+  color: var(--navy-900);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+/* ── Typography helpers ───────────────────────────────────────────────────── */
+.font-display { font-family: 'Cormorant Garamond', serif; }
+
+.display-xl {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.display-md {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.label-sm {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Colour utilities ─────────────────────────────────────────────────────── */
+.text-navy   { color: var(--navy-900); }
+.text-cream  { color: var(--cream-50); }
+.text-gold   { color: var(--gold-400); }
+.bg-navy     { background-color: var(--navy-900); }
+.bg-navy-mid { background-color: var(--navy-800); }
+.bg-cream    { background-color: var(--cream-50); }
+
+/* ── Gradient text ────────────────────────────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #C9A84C 0%, #E2CF96 45%, #C9A84C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Gold divider ─────────────────────────────────────────────────────────── */
+.gold-rule {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  transform-origin: left;
+}
+
+.gold-rule-short {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold-400);
+}
+
+/* ── Section padding ──────────────────────────────────────────────────────── */
+.section-pad { padding: 96px 0; }
+@media (max-width: 768px) { .section-pad { padding: 64px 0; } }
+
+/* ── Card hover ───────────────────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 64px rgba(2, 8, 24, 0.12);
+}
+
+/* ── Navy card on cream background ────────────────────────────────────────── */
+.navy-card {
+  background: var(--navy-900);
+  color: var(--cream-100);
+  border-radius: 4px;
+}
+
+/* ── Cream card on navy background ────────────────────────────────────────── */
+.cream-card {
+  background: var(--cream-50);
+  color: var(--navy-900);
+  border-radius: 4px;
+}
+
+/* ── Button styles ────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy-900);
+  color: var(--cream-50);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border: 1px solid var(--navy-900);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--navy-700);
+  border-color: var(--navy-700);
+}
+
+.btn-outline-cream {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--cream-50);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  border: 1px solid rgba(249,247,240,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline-cream:hover {
+  background: rgba(249,247,240,0.08);
+  border-color: rgba(249,247,240,0.6);
+}
+
+.btn-outline-navy {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--navy-900);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  border: 1px solid var(--navy-900);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline-navy:hover {
+  background: var(--navy-900);
+  color: var(--cream-50);
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream-100); }
+::-webkit-scrollbar-thumb { background: var(--navy-600); }
+
+/* ── Focus ────────────────────────────────────────────────────────────────── */
+input:focus, textarea:focus, select:focus {
+  outline: 1px solid var(--navy-600);
+  outline-offset: 2px;
+}
+
+/* ── Stagger helpers ──────────────────────────────────────────────────────── */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.22s; }
+.delay-3 { animation-delay: 0.34s; }
+.delay-4 { animation-delay: 0.46s; }
+.delay-5 { animation-delay: 0.58s; }
+
+/* ── Horizontal rule with diamond ────────────────────────────────────────── */
+.ornament-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--gold-400);
+}
+.ornament-rule::before,
+.ornament-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
